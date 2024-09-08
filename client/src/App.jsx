@@ -1,17 +1,34 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route, Outlet } from "react-router-dom";
+import Navbar from './components/common/Navbar';
+import Footer from './components/common/Footer';
+import Home from './pages/Home';
+import Appointment from './pages/Appointment';
 
-function App() {
-
+const AppLayout = () => {
   return (
     <>
-      <div>
-        <h1>
-          Welcome to CleanScape services
-        </h1>
-      </div>
+      <Navbar />
+      <main className={`min-h-screen`}>
+        <Outlet />
+      </main>
+      <Footer />
     </>
-  )
+  );
+};
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route element={<AppLayout />}>
+          <Route path="/" exact element={<Home />} />
+          <Route path="/book-appointment" exact element={<Appointment />} />
+        </Route>
+      </Routes>
+    </Router>
+  );
 }
 
 export default App

@@ -5,6 +5,7 @@ import Navbar from './components/common/Navbar';
 import Footer from './components/common/Footer';
 import Home from './pages/Home';
 import Appointment from './pages/Appointment';
+import NotFound from './pages/NotFound';
 
 const AppLayout = () => {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route element={<AppLayout />}>
           <Route path="/" exact element={<Home />} />
           <Route path="/book-appointment" exact element={<Appointment />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </Router>
